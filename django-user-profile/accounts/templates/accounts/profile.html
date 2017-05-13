@@ -1,0 +1,32 @@
+
+{% extends "layout.html" %}
+{% load static from staticfiles %}
+
+{% block title %}Profile | {{ block.super }}{% endblock %}
+
+
+{% block body %}
+<div class="grid-25">
+    <img class="profile-img" src="{{profile.image.url}}" alt="profile image" >
+</div>
+<div class="grid-55">
+    <h1>Your Profile </h1>
+    <p><span class="bio-headers">Name:</span> {{ profile.first_name }}</p>
+    <p><span class="bio-headers">Surname:</span>{{ profile.last_name }}</p>
+    <p><span class="bio-headers"> Date of birth: </span>{{ profile.dob }}</p>
+    <p><span class="bio-headers"> email:</span>{{ profile.email }}</p>
+    <p><span class="bio-headers">City:</span>{{ profile.city }}</p>
+    <p><span class="bio-headers">State:</span>{{ profile.state }}</p>
+    <p><span class="bio-headers">Country:</span>{{ profile.country }}</p>
+    <p><span class="bio-headers">biography:</span>{{ profile.bio|escape }}</p>
+    <p><span class="bio-headers">Favourite Pet:</span>{{ profile.favourite_pet }}</p>
+
+</div>
+<div class="grid-20">
+    <ul>
+        <li><a class="button" href="{% url 'accounts:edit_profile' %}">Edit Profile</a></li>
+        <li><a class="button" href="{% url 'accounts:change_password' %}">change password</a></li>
+    </ul>
+</div>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% load static from staticfiles %}
+
+{% block title %}Edit Profile | {{ block.super }}{% endblock %}
+{% block css%}
+<link rel="stylesheet" href="{% static "css/cropper.css" %}">
+{% endblock %}
+
+{% block body %}
+<div class='grid-30'>
+<img class="profile-img" src="{{profile.image.url}}" alt="profile image" >
+</div>
+<div class="grid-70">
+<h2> Update your profile </h2>
+<form method="POST" class="dropzone" action='' enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p}}
+      <input type="submit" class="button-primary" value="update">
+</form>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalCrop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Crop the photo, click Save ! </h4>
+      </div>
+      <div class="modal-body">
+        <img src="" id="image" style="max-width: 100%;">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Never mind</button>
+        <button type="button" id="save-image" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block accountsjs %}
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/cropper.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/accounts.js" %}"></script>
+
+
+
+
+
+{% endblock%}

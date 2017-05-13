@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% load staticfiles%}
+{% block title %}Welcome | {{ block.super }}{% endblock %}
+
+{% block body %}
+    <div class="grid-35">
+        {% if user.is_authenticated %}
+        <ul>
+            {% if has_profile == True %}
+                <li><a class="button" href="{% url 'accounts:profile' %}">View Profile</a></li>
+            {% else %}
+                <li><a class="button" href="{% url 'accounts:create_profile' %}">Create Profile</a></li>
+            {% endif %}
+
+        </ul>
+        {% endif %}
+    </div>
+    <div class="grid-65">
+        <h1>Welcome!</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad amet assumenda beatae blanditiis, deserunt doloremque ea earum excepturi id, impedit ipsam magnam nulla obcaecati, quidem quis soluta tenetur vitae?</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad amet assumenda beatae blanditiis, deserunt doloremque ea earum excepturi id, impedit ipsam magnam nulla obcaecati, quidem quis soluta tenetur vitae?</p>
+    </div>
+{% endblock %}
